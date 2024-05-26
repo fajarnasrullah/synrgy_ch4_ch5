@@ -1,7 +1,6 @@
 package com.jer.ch4_ch5.ui.login
 
 import android.content.Context
-import androidx.datastore.dataStore
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import com.google.gson.Gson
-import com.jer.ch4_ch5.SharedPreferencesFactory
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginLocal
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginRemote
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginRepository
@@ -19,11 +17,7 @@ import com.jer.ch4_ch5.data.repository.login.dataStore
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class LoginViewModel(
-//    private val context: Context,
-    private val loginRepository: LoginRepository
-): ViewModel() {
-
+class RegisterViewModel(private val loginRepository: LoginRepository): ViewModel() {
 
     companion object {
         fun provideFactory(
@@ -38,37 +32,28 @@ class LoginViewModel(
                     handle: SavedStateHandle,
                 ): T {
                     val loginRepository: LoginRepository = ImplementLoginRepository(
-                            loginLocal = ImplementLoginLocal(
+                        loginLocal = ImplementLoginLocal(
 //                                sharedPreferences = SharedPreferencesFactory().createSharedPreferences(context),
-                                dataStore = context.dataStore
-                            ),
-                    loginRemote = ImplementLoginRemote(reqresService = ApiClientLogin.getApiService(context)),
+                            dataStore = context.dataStore
+                        ),
+                        loginRemote = ImplementLoginRemote(reqresService = ApiClientLogin.getApiService(context)),
                     )
-                    return LoginViewModel(  loginRepository) as T
+                    return RegisterViewModel(  loginRepository) as T
                 }
             }
     }
 
+    private val _token = MutableLiveData<String>()
+     val token: LiveData<String> = _token
 
-    private val _works = MutableLiveData<Boolean>()
-    val works: LiveData<Boolean> = _works
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    fun login(username: String, password: String) {
-//        val user = UserNote()
-//        val userPreferences = UserPreferences(context)
 
-//        user.username = username
-//        user.password = password
-//        userPreferences.setUser(user)
-
+    fun register(email: String, username: String, password: String) {
         viewModelScope.launch {
-
             try {
-                val token = loginRepository.login(username, password)
-                loginRepository.saveToken(token)
-                _works.value = true
+                _token.value = loginRepository.register(email,username, password)
             } catch (throwable: Throwable) {
                 if (throwable is HttpException) {
                     val json = throwable.response()?.errorBody()?.string()
@@ -78,11 +63,13 @@ class LoginViewModel(
                     _error.value = throwable.message
                 }
             }
-
-
-
         }
 
     }
+
+
+
+
+
 
 }

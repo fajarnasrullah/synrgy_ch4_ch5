@@ -7,8 +7,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.jer.ch4_ch5.User
 import com.jer.ch4_ch5.UserPreferences
+import com.jer.ch4_ch5.data.repository.login.GateActivity
 import com.jer.ch4_ch5.databinding.ActivityLoginBinding
 import com.jer.ch4_ch5.ui.HomeNoteActivity
+import com.jer.ch4_ch5.ui.art.DetailArtActivity
+import com.jer.ch4_ch5.ui.art.HomeArtActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,15 +28,17 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.btnLogin.setOnClickListener {
             val username = binding.edtUsername.text.toString().trim()
             val password = binding.edtPassword.text.toString().trim()
-
             when {
                 username.isEmpty() -> binding.edtUsername.error = "Username tidak boleh kosong"
                 password.isEmpty() -> binding.edtPassword.error = "Password tidak boleh kosong"
                 else -> {
                     viewModel.login(username, password)
+
+
 //                    saveUser(username)
 //                    check(userNote)
                 }
@@ -41,24 +46,38 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+
         validate()
 
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+        }
     }
 
 
     fun validate() {
         viewModel.works.observe(this) {itsWorks ->
+            val username = binding.edtUsername.text.toString().trim()
             if (itsWorks) {
-                val intent = Intent(this@LoginActivity, HomeNoteActivity::class.java)
+//                startActivity(Intent(this,
+////                        HomeNoteActivity::class.java,
+//                        HomeArtActivity::class.java)
+//                )
+                val intent = Intent(this, GateActivity::class.java)
+                intent.putExtra("username", username)
                 startActivity(intent)
+
+
                 Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        viewModel.error.observe(this) {throwable ->
-            Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
+        viewModel.error.observe(this) {message ->
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         }
     }
+
+
 
 
 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+
+    app:cardCornerRadius="25dp"
+    android:layout_margin="8dp"
+
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+
+        <ImageView
+            android:id="@+id/ivList"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            tools:src="@tools:sample/avatars"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleArtList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Title of Art"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toEndOf="@+id/ivList"
+            app:layout_constraintTop_toTopOf="@+id/ivList" />
+
+        <TextView
+            android:id="@+id/yearList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Year"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/titleArtList"
+            app:layout_constraintTop_toBottomOf="@+id/titleArtList" />
+
+        <TextView
+            android:id="@+id/artistList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="by Artist"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/titleArtList"
+            app:layout_constraintTop_toBottomOf="@+id/yearList" />
+
+        <TextView
+            android:id="@+id/departmentList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Art Department"
+            android:textSize="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivList"
+            app:layout_constraintStart_toStartOf="@+id/artistList" />
+
+        <TextView
+            android:id="@+id/countryList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Country"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivList"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

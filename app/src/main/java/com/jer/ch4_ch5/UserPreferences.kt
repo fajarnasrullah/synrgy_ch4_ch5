@@ -5,7 +5,7 @@ import android.content.Context
 internal class UserPreferences(context: Context) {
 
     companion object {
-        const val SP = "usserpreferences"
+        const val SP = "userpreferences"
         const val NAME = "name"
         const val PW = "password"
 

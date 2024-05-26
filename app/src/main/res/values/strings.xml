@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CH4_CH5</string>
+    <string name="hint_search">Find the artwork</string>
 </resources>

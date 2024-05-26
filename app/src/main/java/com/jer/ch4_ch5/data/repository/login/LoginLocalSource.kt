@@ -1,7 +1,7 @@
 package com.jer.ch4_ch5.data.repository.login
 
 interface LoginLocalSource {
-    fun saveToken(token: String)
-    fun loadtoken(): String?
-    fun deleteToken()
+    suspend fun saveToken(token: String)
+    suspend fun loadtoken(): String?
+    suspend fun deleteToken()
 }
