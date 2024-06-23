@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jer.ch4_ch5.databinding.ItemArtBinding
-import com.jer.ch4_ch5.ui.art.response.ArtObject
-import com.jer.ch4_ch5.ui.art.response.DetailArtResponse
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.art.response.ArtObject
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.art.response.DetailArtResponse
 
 class ArtAdapter(private val context: Context): ListAdapter<
 //        DetailArtResponse,

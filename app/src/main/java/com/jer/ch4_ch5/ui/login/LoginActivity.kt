@@ -5,18 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.jer.ch4_ch5.User
-import com.jer.ch4_ch5.UserPreferences
-import com.jer.ch4_ch5.data.repository.login.GateActivity
 import com.jer.ch4_ch5.databinding.ActivityLoginBinding
-import com.jer.ch4_ch5.ui.HomeNoteActivity
-import com.jer.ch4_ch5.ui.art.DetailArtActivity
-import com.jer.ch4_ch5.ui.art.HomeArtActivity
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var user: User
+    private lateinit var user: com.jer.ch4_ch5.domain.model.User
     private var isPreferencesEmpty = false
 //    val viewModel: LoginViewModel by viewModels()
     private val viewModel by viewModels<LoginViewModel> {
@@ -81,10 +75,10 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-    fun saveUser(username: String) {
-        val userPreferences = UserPreferences(this)
-        user.username = username
-        userPreferences.setUser(user)
+//    fun saveUser(username: String) {
+//        val userPreferences = UserPreferences(this)
+//        user.username = username
+//        userPreferences.setUser(user)
 
 //        if (username == userNote.username) {
 //            val intent = Intent(this@LoginActivity, HomeNoteActivity::class.java)
@@ -94,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
 //            throw UnsupportedOperationException("user belum registrasi")
 ////           Log.e("LoginRemote", "user belum tidak tersedia")
 //        }
-    }
+//    }
 
 //    fun check(user: User) {
 //        when {

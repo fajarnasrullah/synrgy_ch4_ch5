@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jer.ch4_ch5.User
-import com.jer.ch4_ch5.UserPreferences
 import com.jer.ch4_ch5.databinding.ActivityHomeNoteBinding
 
 

@@ -2,7 +2,7 @@ package com.jer.ch4_ch5.ui
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
-import com.jer.ch4_ch5.data.datasource.room.UserNote
+import com.jer.ch4_ch5.data.datasource.local.room.UserNote
 import com.jer.ch4_ch5.data.repository.students.NoteStudentsRepository
 
 class NoteViewModel(application: Application): ViewModel() {

@@ -7,7 +7,7 @@ import android.renderscript.ScriptGroup.Binding
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.jer.ch4_ch5.R
-import com.jer.ch4_ch5.data.datasource.room.UserNote
+import com.jer.ch4_ch5.data.datasource.local.room.UserNote
 import com.jer.ch4_ch5.databinding.ActivityFormNoteBinding
 
 class FormNoteActivity : AppCompatActivity() {

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.jer.ch4_ch5.data.datasource.room.UserNote
+import com.jer.ch4_ch5.data.datasource.local.room.UserNote
 import com.jer.ch4_ch5.databinding.ItemNoteBinding
 
 class NoteRoomAdapter:RecyclerView.Adapter<NoteRoomAdapter.RoomViewHolder>() {

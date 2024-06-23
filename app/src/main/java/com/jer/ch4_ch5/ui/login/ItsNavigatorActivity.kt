@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.jer.ch4_ch5.data.repository.login.GateActivity
-import com.jer.ch4_ch5.ui.art.HomeArtActivity
 
 class ItsNavigatorActivity: AppCompatActivity() {
 

@@ -1,7 +1,6 @@
 package com.jer.ch4_ch5.ui.login
 
 import android.content.Context
-import androidx.datastore.dataStore
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,18 +9,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import com.google.gson.Gson
-import com.jer.ch4_ch5.SharedPreferencesFactory
-import com.jer.ch4_ch5.data.repository.login.ImplementLoginLocal
-import com.jer.ch4_ch5.data.repository.login.ImplementLoginRemote
+import com.jer.ch4_ch5.data.datasource.local.ImplementLoginLocal
+import com.jer.ch4_ch5.data.datasource.local.dataStore
+import com.jer.ch4_ch5.data.datasource.remote.ImplementLoginRemote
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ApiClientLogin
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginRepository
-import com.jer.ch4_ch5.data.repository.login.LoginRepository
-import com.jer.ch4_ch5.data.repository.login.dataStore
+
+import com.jer.ch4_ch5.domain.repository.LoginRepository
+
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class LoginViewModel(
 //    private val context: Context,
-    private val loginRepository: LoginRepository
+
+    private val loginUseCase:  com.jer.ch4_ch5.domain.usecase.LoginUseCase,
+//    private val loginRepository: LoginRepository
 ): ViewModel() {
 
 
@@ -37,14 +40,17 @@ class LoginViewModel(
                     modelClass: Class<T>,
                     handle: SavedStateHandle,
                 ): T {
-                    val loginRepository: LoginRepository = ImplementLoginRepository(
+                    val loginRepository: com.jer.ch4_ch5.domain.repository.LoginRepository = ImplementLoginRepository(
                             loginLocal = ImplementLoginLocal(
 //                                sharedPreferences = SharedPreferencesFactory().createSharedPreferences(context),
                                 dataStore = context.dataStore
                             ),
                     loginRemote = ImplementLoginRemote(reqresService = ApiClientLogin.getApiService(context)),
                     )
-                    return LoginViewModel(  loginRepository) as T
+                    return LoginViewModel(  loginUseCase = com.jer.ch4_ch5.domain.usecase.LoginUseCase(
+                        loginRepository
+                    )
+                    ) as T
                 }
             }
     }
@@ -66,8 +72,9 @@ class LoginViewModel(
         viewModelScope.launch {
 
             try {
-                val token = loginRepository.login(username, password)
-                loginRepository.saveToken(token)
+                loginUseCase.login(username, password)
+//                val token = loginRepository.login(username, password)
+//                loginRepository.saveToken(token)
                 _works.value = true
             } catch (throwable: Throwable) {
                 if (throwable is HttpException) {

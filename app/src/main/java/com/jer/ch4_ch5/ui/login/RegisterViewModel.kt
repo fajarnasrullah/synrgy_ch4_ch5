@@ -9,15 +9,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.savedstate.SavedStateRegistryOwner
 import com.google.gson.Gson
-import com.jer.ch4_ch5.data.repository.login.ImplementLoginLocal
-import com.jer.ch4_ch5.data.repository.login.ImplementLoginRemote
+import com.jer.ch4_ch5.data.datasource.local.ImplementLoginLocal
+import com.jer.ch4_ch5.data.datasource.remote.ImplementLoginRemote
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginRepository
-import com.jer.ch4_ch5.data.repository.login.LoginRepository
-import com.jer.ch4_ch5.data.repository.login.dataStore
+import com.jer.ch4_ch5.data.datasource.local.dataStore
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class RegisterViewModel(private val loginRepository: LoginRepository): ViewModel() {
+class RegisterViewModel(private val loginRepository: com.jer.ch4_ch5.domain.repository.LoginRepository): ViewModel() {
 
     companion object {
         fun provideFactory(
@@ -31,12 +30,12 @@ class RegisterViewModel(private val loginRepository: LoginRepository): ViewModel
                     modelClass: Class<T>,
                     handle: SavedStateHandle,
                 ): T {
-                    val loginRepository: LoginRepository = ImplementLoginRepository(
+                    val loginRepository: com.jer.ch4_ch5.domain.repository.LoginRepository = ImplementLoginRepository(
                         loginLocal = ImplementLoginLocal(
 //                                sharedPreferences = SharedPreferencesFactory().createSharedPreferences(context),
                             dataStore = context.dataStore
                         ),
-                        loginRemote = ImplementLoginRemote(reqresService = ApiClientLogin.getApiService(context)),
+                        loginRemote = ImplementLoginRemote(reqresService = com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ApiClientLogin.getApiService(context)),
                     )
                     return RegisterViewModel(  loginRepository) as T
                 }

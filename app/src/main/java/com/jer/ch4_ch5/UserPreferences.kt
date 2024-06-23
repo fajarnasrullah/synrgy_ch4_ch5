@@ -14,15 +14,15 @@ internal class UserPreferences(context: Context) {
     private val preferences = context.getSharedPreferences(SP, Context.MODE_PRIVATE)
 
 
-    fun setUser(user: User) {
+    fun setUser(user: com.jer.ch4_ch5.domain.model.User) {
         val edit = preferences.edit()
         edit.putString(NAME, user.username)
         edit.putString(PW, user.password)
         edit.apply()
     }
 
-    fun getUser(): User {
-        val user = User()
+    fun getUser(): com.jer.ch4_ch5.domain.model.User {
+        val user = com.jer.ch4_ch5.domain.model.User()
         user.username = preferences.getString(NAME, "")
         user.password = preferences.getString(PW, "")
         return user

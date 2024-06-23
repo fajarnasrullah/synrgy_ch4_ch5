@@ -1,7 +1,7 @@
 package com.jer.ch4_ch5.ui
 
 import androidx.recyclerview.widget.DiffUtil
-import com.jer.ch4_ch5.data.datasource.room.UserNote
+import com.jer.ch4_ch5.data.datasource.local.room.UserNote
 
 class NoteDiffCallback(private val oldListNote: List<UserNote>, private val newListNote: List<UserNote>): DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldListNote.size

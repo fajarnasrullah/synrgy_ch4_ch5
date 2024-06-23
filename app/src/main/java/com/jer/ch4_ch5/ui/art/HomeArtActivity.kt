@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jer.ch4_ch5.R
 import com.jer.ch4_ch5.databinding.ActivityHomeArtBinding
-import com.jer.ch4_ch5.ui.art.response.ArtObject
-import com.jer.ch4_ch5.ui.art.response.DetailArtResponse
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.art.response.ArtObject
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.art.response.DetailArtResponse
 import com.jer.ch4_ch5.ui.login.DetailUserActivity
 import com.jer.ch4_ch5.ui.login.LoginActivity
 import com.jer.ch4_ch5.ui.login.RegisterViewModel
