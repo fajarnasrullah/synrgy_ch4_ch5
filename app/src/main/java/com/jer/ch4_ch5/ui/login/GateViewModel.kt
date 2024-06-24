@@ -13,34 +13,35 @@ import com.jer.ch4_ch5.data.datasource.local.dataStore
 import com.jer.ch4_ch5.data.datasource.remote.ImplementLoginRemote
 import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ApiClientLogin
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginRepository
+import com.jer.ch4_ch5.domain.repository.LoginRepository
 import kotlinx.coroutines.launch
 
-class GateViewModel(private val loginRepository: com.jer.ch4_ch5.domain.repository.LoginRepository): ViewModel() {
+class GateViewModel(private val loginRepository: LoginRepository): ViewModel() {
 
-    companion object {
-
-        fun provideFactory(
-            owner: SavedStateRegistryOwner,
-            context: Context,
-        ): AbstractSavedStateViewModelFactory =
-            object : AbstractSavedStateViewModelFactory(owner, null) {
-                @Suppress("UNCHECKED_CAST")
-                override fun <T : ViewModel> create(
-                    key: String,
-                    modelClass: Class<T>,
-                    handle: SavedStateHandle,
-                ): T {
-                    val loginRepository: com.jer.ch4_ch5.domain.repository.LoginRepository = ImplementLoginRepository(
-                        loginLocal = ImplementLoginLocal(
-//                                sharedPreferences = SharedPreferencesFactory().createSharedPreferences(context),
-                            dataStore = context.dataStore
-                        ),
-                        loginRemote = ImplementLoginRemote(reqresService = ApiClientLogin.getApiService(context)),
-                    )
-                    return GateViewModel( loginRepository) as T
-                }
-            }
-    }
+//    companion object {
+//
+//        fun provideFactory(
+//            owner: SavedStateRegistryOwner,
+//            context: Context,
+//        ): AbstractSavedStateViewModelFactory =
+//            object : AbstractSavedStateViewModelFactory(owner, null) {
+//                @Suppress("UNCHECKED_CAST")
+//                override fun <T : ViewModel> create(
+//                    key: String,
+//                    modelClass: Class<T>,
+//                    handle: SavedStateHandle,
+//                ): T {
+//                    val loginRepository: com.jer.ch4_ch5.domain.repository.LoginRepository = ImplementLoginRepository(
+//                        loginLocal = ImplementLoginLocal(
+////                                sharedPreferences = SharedPreferencesFactory().createSharedPreferences(context),
+//                            dataStore = context.dataStore
+//                        ),
+//                        loginRemote = ImplementLoginRemote(reqresService = ApiClientLogin.getApiService(context)),
+//                    )
+//                    return GateViewModel( loginRepository) as T
+//                }
+//            }
+//    }
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error

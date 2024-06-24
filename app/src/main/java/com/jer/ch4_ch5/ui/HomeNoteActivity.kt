@@ -3,8 +3,10 @@ package com.jer.ch4_ch5.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jer.ch4_ch5.MyApplication
 import com.jer.ch4_ch5.databinding.ActivityHomeNoteBinding
 
 
@@ -15,13 +17,16 @@ class HomeNoteActivity : AppCompatActivity() {
     private lateinit var adapter: NoteRoomAdapter
 //    private lateinit var user: User
 //    private lateinit var userPreferences: UserPreferences
+    private val viewModel by viewModels<GetAllNotesViewModel> {
+    (application as MyApplication).viewModelFactory
+}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityHomeNoteBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        val viewModel = obtainViewModel(this@HomeNoteActivity)
+//        val viewModel = obtainViewModel(this@HomeNoteActivity)
         viewModel.getAllNotes().observe(this) {notes ->
             if (notes != null) {
                 adapter.setListNotes(notes)

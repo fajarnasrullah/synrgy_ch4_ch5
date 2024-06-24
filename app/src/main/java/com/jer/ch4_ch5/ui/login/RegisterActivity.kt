@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.jer.ch4_ch5.MyApplication
 import com.jer.ch4_ch5.R
 import com.jer.ch4_ch5.databinding.ActivityRegisterBinding
 
@@ -11,7 +12,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel by viewModels<RegisterViewModel> {
-        RegisterViewModel.provideFactory(this, this)
+        (application as MyApplication).viewModelFactory
+//        RegisterViewModel.provideFactory(this, this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

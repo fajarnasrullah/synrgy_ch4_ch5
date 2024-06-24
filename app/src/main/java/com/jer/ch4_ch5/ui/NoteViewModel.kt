@@ -5,9 +5,13 @@ import androidx.lifecycle.ViewModel
 import com.jer.ch4_ch5.data.datasource.local.room.UserNote
 import com.jer.ch4_ch5.data.repository.students.NoteStudentsRepository
 
-class NoteViewModel(application: Application): ViewModel() {
+class NoteViewModel(
 
-    private val repository: NoteStudentsRepository = NoteStudentsRepository(application)
+//    application: Application
+    private val repository: NoteStudentsRepository
+    ): ViewModel() {
+
+//    private val repository: NoteStudentsRepository = NoteStudentsRepository(application)
 
     fun insert(userNote: UserNote) {
         repository.insert(userNote)

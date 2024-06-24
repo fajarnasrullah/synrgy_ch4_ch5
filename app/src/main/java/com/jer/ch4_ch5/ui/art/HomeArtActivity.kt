@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jer.ch4_ch5.MyApplication
 import com.jer.ch4_ch5.R
 import com.jer.ch4_ch5.databinding.ActivityHomeArtBinding
 import com.jer.ch4_ch5.data.datasource.remote.retrofit.art.response.ArtObject
@@ -21,6 +22,9 @@ class HomeArtActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeArtBinding
 
     private lateinit var viewModel: ArtViewModel
+//    private  val viewModel by viewModels<ArtViewModel> {
+//    (application as MyApplication).viewModelFactory
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeArtBinding.inflate(layoutInflater)

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.jer.ch4_ch5.MyApplication
 import com.jer.ch4_ch5.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -14,8 +15,9 @@ class LoginActivity : AppCompatActivity() {
     private var isPreferencesEmpty = false
 //    val viewModel: LoginViewModel by viewModels()
     private val viewModel by viewModels<LoginViewModel> {
-    LoginViewModel.provideFactory(this, this)
-}
+    (application as MyApplication).viewModelFactory
+//    LoginViewModel.provideFactory(this, this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

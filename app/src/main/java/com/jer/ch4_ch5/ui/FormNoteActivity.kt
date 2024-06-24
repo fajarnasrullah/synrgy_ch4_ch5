@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.renderscript.ScriptGroup.Binding
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.jer.ch4_ch5.MyApplication
 import com.jer.ch4_ch5.R
 import com.jer.ch4_ch5.data.datasource.local.room.UserNote
 import com.jer.ch4_ch5.databinding.ActivityFormNoteBinding
@@ -15,7 +17,10 @@ class FormNoteActivity : AppCompatActivity() {
     private  var _binding: ActivityFormNoteBinding? = null
     private val binding get() = _binding
 
-    private lateinit var viewModel: NoteViewModel
+//    private lateinit var viewModel: NoteViewModel
+    private val viewModel by viewModels<NoteViewModel> {
+    (application as MyApplication).viewModelFactory
+    }
     companion object {
         const val EXTRA_NOTE = "extra_note"
 
@@ -28,7 +33,7 @@ class FormNoteActivity : AppCompatActivity() {
         _binding = ActivityFormNoteBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        viewModel = obtainViewModel(this@FormNoteActivity)
+//        viewModel = obtainViewModel(this@FormNoteActivity)
 
         note = intent.getParcelableExtra(EXTRA_NOTE)
         if (note != null) {
