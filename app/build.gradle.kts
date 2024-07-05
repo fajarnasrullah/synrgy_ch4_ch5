@@ -1,10 +1,13 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.libsDirectory
 
 plugins {
+
+
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+
 
 
 }
@@ -52,6 +55,13 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":di"))
 
+    implementation ("io.github.chochanaresh:filepicker:0.2.5")
+//    implementation(libs.filepicker)
+//    implementation("com.github.TutorialsAndroid:FilePicker:v4.0.19")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("io.coil-kt:coil:2.6.0")
+    implementation("io.insert-koin:koin-bom:3.5.6")
+    implementation ("io.insert-koin:koin-android")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.squareup.retrofit2:retrofit:2.11.0")

@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import com.jer.ch4_ch5.MyApplication
 import com.jer.ch4_ch5.databinding.ActivityGateBinding
 import com.jer.ch4_ch5.ui.art.HomeArtActivity
+import com.jer.ch4_ch5.ui.camera.ImageHandlerActivity
 
 class GateActivity : AppCompatActivity() {
 
@@ -26,6 +27,10 @@ class GateActivity : AppCompatActivity() {
 
         binding.btnToHome.setOnClickListener {
             startActivity(Intent(this, HomeArtActivity::class.java))
+        }
+
+        binding.btnToImageHandler.setOnClickListener {
+            startActivity(Intent(this, ImageHandlerActivity::class.java))
         }
 
         viewModel.error.observe(this) {

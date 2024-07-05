@@ -39,6 +39,9 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
+    implementation("io.insert-koin:koin-bom:3.5.6")
+    implementation ("io.insert-koin:koin-android")
+
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     ksp("androidx.room:room-compiler:2.5.2")
     implementation("androidx.room:room-runtime:2.5.2")
