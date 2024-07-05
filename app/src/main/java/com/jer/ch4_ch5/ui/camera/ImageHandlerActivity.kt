@@ -63,7 +63,7 @@ class ImageHandlerActivity : AppCompatActivity() {
             Toast.makeText(this, "permission telah ditolak", Toast.LENGTH_SHORT).show()
             onBackPressed()
         } else {
-            Toast.makeText(this, "permissiontelah  diterima", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "permission telah  diterima", Toast.LENGTH_SHORT).show()
         }
     }
 
