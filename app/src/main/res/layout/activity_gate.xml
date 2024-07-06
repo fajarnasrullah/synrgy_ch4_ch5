@@ -31,6 +31,13 @@
         android:layout_margin="8dp" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnToBlurPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="to Blur Image Page"
+        android:layout_margin="8dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

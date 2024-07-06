@@ -2,6 +2,7 @@ package com.jer.ch4_ch5.di.factory
 
 import com.jer.ch4_ch5.ui.GetAllNotesViewModel
 import com.jer.ch4_ch5.ui.NoteViewModel
+import com.jer.ch4_ch5.ui.blur.BlurViewModel
 import com.jer.ch4_ch5.ui.login.GateViewModel
 import com.jer.ch4_ch5.ui.login.ItsNavigatorViewmodel
 import com.jer.ch4_ch5.ui.login.LoginViewModel
@@ -17,5 +18,6 @@ val koinViewModelModule = module {
     viewModel { ItsNavigatorViewmodel(loginRepository = get()) }
     viewModel { GetAllNotesViewModel(repository = get()) }
     viewModel { NoteViewModel(repository = get()) }
+    viewModel { BlurViewModel(get())}
 
 }
