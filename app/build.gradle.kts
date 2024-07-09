@@ -40,11 +40,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }
 
@@ -54,6 +54,14 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":di"))
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
+    testImplementation("org.mockito:mockito-inline:5.2.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+//    testImplementation("org.mockito:mockito-core:4.4.0")
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:5.3.1")
+//    testImplementation ("io.mockk:mockk:1.13.8")
+    testImplementation("junit:junit:4.13.2")
 
     implementation ("io.github.chochanaresh:filepicker:0.2.5")
 //    implementation(libs.filepicker)

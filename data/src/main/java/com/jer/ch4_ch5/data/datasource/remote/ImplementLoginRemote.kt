@@ -7,8 +7,7 @@ import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.RegisterBody
 import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ReqresService
 
 
-class ImplementLoginRemote(private val reqresService: ReqresService):
-    LoginRemoteSource {
+class ImplementLoginRemote(private val reqresService: ReqresService): LoginRemoteSource {
 
     val user = listOf(
 
@@ -21,9 +20,15 @@ class ImplementLoginRemote(private val reqresService: ReqresService):
         return if (user.contains(User(username, password))) {
             "qwertyuiopasdfghjklzxcvbnm"
         } else {
+//            val response = reqresService.login(
+//                loginBody = LoginBody(username, password, username)
+//            )
+//            return response.token ?: throw NullPointerException("Login response is null")
             reqresService.login(
                 loginBody = LoginBody(username, password, username)
             ).token
+
+
 //            throw UnsupportedOperationException("user belum registrasi")
 //           Log.e("LoginRemote", "user belum tidak tersedia")
         }
