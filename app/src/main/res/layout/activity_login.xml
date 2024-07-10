@@ -38,7 +38,9 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/colorcolor"
         android:text="Login"
+        android:textColor="@color/white"
         android:layout_margin="16dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -55,7 +57,8 @@
         android:layout_height="wrap_content"
         android:text="Lets Join The CLub!"
         android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
