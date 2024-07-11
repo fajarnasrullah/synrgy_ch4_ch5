@@ -1,6 +1,7 @@
 package com.jer.ch4_ch5.data.datasource.remote.retrofit.login
 
 import android.content.Context
+import com.jer.ch4_ch5.data.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,7 +21,7 @@ class ApiClientLogin {
             val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val okHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
             val retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BuildConfig.BASE_URL_REQRES)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build()

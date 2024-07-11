@@ -17,14 +17,63 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
-        release {
+
+        debug {
             isMinifyEnabled = false
+            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+
+        }
+
+        create ("staging") {
+            isMinifyEnabled = true
+            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
+
+        release {
+            isMinifyEnabled = true
+            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+        create("beta") {
+            isMinifyEnabled = true
+            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+
+        }
+
+        create("internal") {
+            isMinifyEnabled = false
+            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+        }
+
+        create("uat") {
+            isMinifyEnabled = true
+            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

@@ -56,6 +56,33 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        create("beta") {
+            isDebuggable = true
+            isMinifyEnabled = true
+
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            applicationIdSuffix = ".beta"
+        }
+
+        create("internal") {
+            isDebuggable = true
+            isMinifyEnabled = false
+            applicationIdSuffix = ".internal"
+        }
+
+        create("uat") {
+            isDebuggable = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            applicationIdSuffix = ".uat"
+        }
     }
 
     flavorDimensions += "mode"
