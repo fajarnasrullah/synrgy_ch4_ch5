@@ -8,8 +8,10 @@ import com.jer.ch4_ch5.data.datasource.LoginRemoteSource
 import com.jer.ch4_ch5.data.datasource.local.ImplementLoginLocal
 import com.jer.ch4_ch5.data.datasource.local.dataStore
 import com.jer.ch4_ch5.data.datasource.remote.ImplementLoginRemote
-import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ApiClientLogin
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.art.ApiService
+
 import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ReqresService
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.provideLoginService
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginRepository
 import com.jer.ch4_ch5.data.repository.students.NoteStudentsRepository
 import com.jer.ch4_ch5.domain.repository.LoginRepository
@@ -23,11 +25,14 @@ val koinModule = module {
     single<LoginUseCase> { LoginUseCase(loginRepository = get()) }
     single<LoginRepository> { ImplementLoginRepository(loginRemote = get(), loginLocal = get()) }
     single<LoginRemoteSource> { ImplementLoginRemote(reqresService = get()) }
-    single<ReqresService> {ApiClientLogin.getApiService(get()) }
+//    single<ReqresService> {ApiClientLogin.getApiService(get()) }
     single<LoginLocalSource> { ImplementLoginLocal(get()) }
     single<DataStore<Preferences>> { androidContext().dataStore }
 //        single<NoteStudentsRepository> { NoteStudentsRepository(Application()) }
     single<NoteStudentsRepository> { NoteStudentsRepository(get()) }
+
+    single<ReqresService>{provideLoginService(get())}
+//    single<ApiService>{provideArtService(get())}
 
 
 

@@ -50,28 +50,28 @@ android {
             )
         }
 
-        create("beta") {
-            isMinifyEnabled = true
-            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
-            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
-
-        }
-
-        create("internal") {
-            isMinifyEnabled = false
-            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
-            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
-        }
-
-        create("uat") {
-            isMinifyEnabled = true
-            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
-            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+//        create("beta") {
+//            isMinifyEnabled = true
+//            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+//            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+//
+//        }
+//
+//        create("internal") {
+//            isMinifyEnabled = false
+//            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+//            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+//        }
+//
+//        create("uat") {
+//            isMinifyEnabled = true
+//            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+//            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
 
 
     }
@@ -95,6 +95,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
 
 
+
+    debugImplementation ("com.github.chuckerteam.chucker:library:4.0.0")
+    releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.0.0")
     implementation ("androidx.work:work-runtime-ktx:2.7.1")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")

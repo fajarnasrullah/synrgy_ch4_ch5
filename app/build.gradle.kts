@@ -55,49 +55,53 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+//            applicationIdSuffix = ".release"
+
         }
 
-        create("beta") {
-            isDebuggable = true
-            isMinifyEnabled = true
-
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            applicationIdSuffix = ".beta"
-        }
-
-        create("internal") {
-            isDebuggable = true
-            isMinifyEnabled = false
-            applicationIdSuffix = ".internal"
-        }
-
-        create("uat") {
-            isDebuggable = false
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            applicationIdSuffix = ".uat"
-        }
+//        create("beta") {
+//            isDebuggable = true
+//            isMinifyEnabled = true
+//
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//            applicationIdSuffix = ".beta"
+//        }
+//
+//        create("internal") {
+//            isDebuggable = false
+//            isMinifyEnabled = false
+//            applicationIdSuffix = ".internal"
+//        }
+//
+//        create("uat") {
+//            isDebuggable = false
+//            isMinifyEnabled = true
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//            applicationIdSuffix = ".uat"
+//        }
     }
 
     flavorDimensions += "mode"
     productFlavors {
-        create ("paid") {
-            dimension = "mode"
-            applicationIdSuffix = ".paid"
-
-        }
-
         create ("free") {
             dimension = "mode"
             applicationIdSuffix = ".free"
 
         }
+
+        create ("paid") {
+            dimension = "mode"
+//            applicationIdSuffix = ".paid"
+
+        }
+
+
 
     }
 
@@ -108,6 +112,11 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    lint {
+        baseline = file("lint.xml")
+    }
+
 }
 
 dependencies {
@@ -125,6 +134,8 @@ dependencies {
 //    testImplementation ("io.mockk:mockk:1.13.8")
     testImplementation("junit:junit:4.13.2")
 
+    debugImplementation ("com.github.chuckerteam.chucker:library:4.0.0")
+    releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.0.0")
     implementation ("io.github.chochanaresh:filepicker:0.2.5")
 //    implementation(libs.filepicker)
 //    implementation("com.github.TutorialsAndroid:FilePicker:v4.0.19")

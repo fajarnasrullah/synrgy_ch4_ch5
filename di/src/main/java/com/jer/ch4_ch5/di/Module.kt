@@ -9,8 +9,10 @@ import com.jer.ch4_ch5.data.datasource.LoginRemoteSource
 import com.jer.ch4_ch5.data.datasource.local.ImplementLoginLocal
 import com.jer.ch4_ch5.data.datasource.local.dataStore
 import com.jer.ch4_ch5.data.datasource.remote.ImplementLoginRemote
-import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ApiClientLogin
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.art.ApiService
+
 import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.ReqresService
+import com.jer.ch4_ch5.data.datasource.remote.retrofit.login.provideLoginService
 import com.jer.ch4_ch5.data.repository.login.ImplementLoginRepository
 import com.jer.ch4_ch5.data.repository.students.NoteStudentsRepository
 import com.jer.ch4_ch5.domain.repository.LoginRepository
@@ -31,8 +33,13 @@ class Module(context: Context) {
     }
 
     val reqresService: ReqresService by lazy {
-        ApiClientLogin.getApiService(context)
+        provideLoginService(context)
+//        ApiClientLogin.getApiService(context)
     }
+
+//    val artService: ApiService by lazy {
+//        provideArtService(context)
+//    }
 
     val loginLocal: LoginLocalSource by lazy {
         ImplementLoginLocal(dataStore)

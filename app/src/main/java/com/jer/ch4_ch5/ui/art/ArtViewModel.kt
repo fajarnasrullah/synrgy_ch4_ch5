@@ -104,7 +104,7 @@ class ArtViewModel(
 //    }
 
     fun findDetailArt(id: String) {
-        ApiClient.getApiService(ApiService::class.java).getDetailArtworks(id).enqueue(object : Callback<DetailArtworkResponse> {
+        ApiClient.getApiService(ApiService::class.java) .getDetailArtworks(id).enqueue(object : Callback<DetailArtworkResponse> {
             override fun onResponse(
                 p0: Call<DetailArtworkResponse>,
                 p1: Response<DetailArtworkResponse>
