@@ -152,7 +152,7 @@ class ImageHandlerActivity : AppCompatActivity() {
 
         uri = FileProvider.getUriForFile(
             this,
-            "com.jer.ch4_ch5.provider",
+            "com.jer.ch4_ch5.dev.provider",
             photoFile
         )
 
