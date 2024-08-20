@@ -7,6 +7,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.firebase-perf")
 
 
 
@@ -127,6 +129,11 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":di"))
+
+
+    implementation("com.google.firebase:firebase-perf:21.0.1")
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation("com.google.firebase:firebase-analytics")
 
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
     testImplementation("org.mockito:mockito-inline:5.2.0")
