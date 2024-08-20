@@ -37,16 +37,16 @@ android {
             isMinifyEnabled = false
             applicationIdSuffix = ".dev"
         }
-
-        create ("staging") {
-            isDebuggable = true
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            applicationIdSuffix = ".stg"
-        }
+//
+//        create ("staging") {
+//            isDebuggable = true
+//            isMinifyEnabled = false
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//            applicationIdSuffix = ".stg"
+//        }
 
         release {
             isDebuggable = false
@@ -119,6 +119,8 @@ android {
 
 }
 
+
+
 dependencies {
 
 
@@ -141,7 +143,7 @@ dependencies {
 //    implementation("com.github.TutorialsAndroid:FilePicker:v4.0.19")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("io.coil-kt:coil:2.6.0")
-    implementation("io.insert-koin:koin-bom:3.5.6")
+    implementation(platform("io.insert-koin:koin-bom:3.5.6"))
     implementation ("io.insert-koin:koin-android")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")

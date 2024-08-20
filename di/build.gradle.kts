@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.jer.ch4_ch5.di"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -24,14 +24,14 @@ android {
         debug {
             isMinifyEnabled = false
         }
-
-        create ("staging") {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+//
+//        create ("staging") {
+//            isMinifyEnabled = false
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
 
         release {
             isMinifyEnabled = true
@@ -72,8 +72,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation("io.insert-koin:koin-bom:3.5.6")
-
+    implementation(platform("io.insert-koin:koin-bom:3.5.6"))
     implementation ("io.insert-koin:koin-android")
 
     implementation("androidx.datastore:datastore-preferences:1.1.1")

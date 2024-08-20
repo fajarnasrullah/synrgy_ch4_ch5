@@ -27,6 +27,7 @@ val koinModule = module {
     single<LoginRemoteSource> { ImplementLoginRemote(reqresService = get()) }
 //    single<ReqresService> {ApiClientLogin.getApiService(get()) }
     single<LoginLocalSource> { ImplementLoginLocal(get()) }
+
     single<DataStore<Preferences>> { androidContext().dataStore }
 //        single<NoteStudentsRepository> { NoteStudentsRepository(Application()) }
     single<NoteStudentsRepository> { NoteStudentsRepository(get()) }

@@ -8,13 +8,19 @@ plugins {
 
 android {
     namespace = "com.jer.ch4_ch5.data"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                argument("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildFeatures {
@@ -30,15 +36,15 @@ android {
 
         }
 
-        create ("staging") {
-            isMinifyEnabled = true
-            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
-            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+//        create ("staging") {
+//            isMinifyEnabled = false
+//            buildConfigField("String", "BASE_URL_ART", "\"https://www.rijksmuseum.nl/\"")
+//            buildConfigField("String", "BASE_URL_REQRES", "\"https://reqres.in/api/\"")
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
 
         release {
             isMinifyEnabled = true
